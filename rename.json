@@ -1,0 +1,3 @@
+{
+  "lib/name.coffee": "lib/{%= clean_name %}.coffee"
+}

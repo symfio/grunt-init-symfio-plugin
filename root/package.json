@@ -1,0 +1,38 @@
+{
+  "name": "symfio-{%= plugin_name %}"
+, "version": "{%= version %}"
+, "description": "{%= description %}"
+, "keywords": ["symfio-plugin"{% if (contrib) { %}, "symfio-contrib"{% } %}, "{%= clean_name %}"]
+, "homepage": "http://symf.io/plugins/{%= plugin_name %}"
+{% if (contrib) { %}, "bugs": {
+    "url": "https://github.com/symfio/{%= plugin_name %}/issues"
+  , "email": "webmaster@rithis.com"
+  }{% } %}
+, "author": {
+    "name": "{%= author_name %}"
+  , "email": "{%= author_email %}"
+  }
+, "main": "lib/{%= clean_name %}"
+{% if (contrib) { %}, "repository": {
+    "type": "git"
+  , "url": "git://github.com/symfio/{%= plugin_name %}.git"
+  }{% } %}
+, "scripts": {
+    "test": "grunt simplemocha"
+  }
+, "dependencies": {
+  }
+, "devDependencies": {
+    "symfio": "~1.0"
+  , "symfio-suite": "~1.0"
+  , "symfio-contrib-express": "~0.1"
+  , "grunt": "~0.4"
+  , "grunt-simple-mocha": "~0.3"
+  , "grunt-coffeelint": "~0.0"
+  }
+, "engines": {
+    "node": "~0.8"
+  , "npm": "~1.2"
+  , "coffee-script": "~1.6"
+  }
+}
