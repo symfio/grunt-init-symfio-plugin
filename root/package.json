@@ -5,7 +5,7 @@
 , "keywords": ["symfio-plugin"{% if (contrib) { %}, "symfio-contrib"{% } %}, "{%= clean_name %}"]
 , "homepage": "http://symf.io/plugins/{%= plugin_name %}"
 {% if (contrib) { %}, "bugs": {
-    "url": "https://github.com/symfio/{%= plugin_name %}/issues"
+    "url": "https://github.com/symfio/symfio-{%= plugin_name %}/issues"
   , "email": "webmaster@rithis.com"
   }{% } %}
 , "author": {
@@ -15,7 +15,7 @@
 , "main": "lib/{%= clean_name %}"
 {% if (contrib) { %}, "repository": {
     "type": "git"
-  , "url": "git://github.com/symfio/{%= plugin_name %}.git"
+  , "url": "git://github.com/symfio/symfio-{%= plugin_name %}.git"
   }{% } %}
 , "scripts": {
     "test": "grunt simplemocha"
