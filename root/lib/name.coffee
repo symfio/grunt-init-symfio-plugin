@@ -1,14 +1,11 @@
-module.exports = (container, callback) ->
-  response = container.get "ping response", "pong"
-  logger = container.get "logger"
-  app = container.get "app"
+module.exports = (container, get) ->
+  container.unless "pingResponse", "pong"
 
-  logger.info "loading plugin", "{%= plugin_name %}"
+  container.set "pingReply", (pingResponse, logger) ->
+    ->
+      logger.info "ping response", message: pingResponse
+      "Response is \"#{pingResponse}\""
 
-  app.use (req, res, callback) ->
-    return callback() unless req.method is "GET"
-    return callback() unless req.url is "/ping"
-
-    res.send 200, response
-
-  callback()
+  get "/ping", (pingReply) ->
+    (req, res) ->
+      res.send 200, pingReply()

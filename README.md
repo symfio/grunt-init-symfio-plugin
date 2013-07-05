@@ -10,7 +10,7 @@ Once grunt-init is installed, place this template in your `~/.grunt-init/`
 directory. It's recommended that you use git to clone this template into that
 directory, as follows:
 
-```
+```shell
 git clone git://github.com/symfio/grunt-init-symfio-plugin.git ~/.grunt-init/symfio-plugin
 ```
 
@@ -22,7 +22,7 @@ directory path)_
 At the command-line, cd into an empty directory, run this command and follow the
 prompts.
 
-```
+```shell
 grunt-init symfio-plugin
 ```
 

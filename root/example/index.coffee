@@ -1,8 +1,15 @@
 symfio = require "symfio"
 
-module.exports = container = symfio "example", __dirname
-loader = container.get "loader"
 
-loader.use require "symfio-contrib-express"
-loader.use require "../lib/{%= clean_name %}"
-loader.load() if require.main is module
+module.exports = container = symfio "example", __dirname
+
+module.exports.promise = container.injectAll [
+  require "symfio-contrib-winston"
+  require "symfio-contrib-express"
+  require ".."
+]
+
+
+if require.main is module
+  container.get("listener").then (listener) ->
+    listener.listen()

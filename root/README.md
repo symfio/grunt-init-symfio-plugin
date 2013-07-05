@@ -8,20 +8,25 @@
 symfio = require "symfio"
 
 container = symfio "example", __dirname
-container.set "ping response", "It's works!"
 
-loader = container.get "loader"
+container.set "pingResponse", "It's works!"
 
-loader.use require "symfio-contrib-express"
-loader.use require "symfio-{%= plugin_name %}"
-
-loader.load()
+container.inject require "symfio-contrib-express"
+container.inject require "symfio-{%= plugin_name %}"
 ```
 
-## Required plugins
+## Dependensies
 
 * [contrib-express](https://github.com/symfio/symfio-contrib-express)
 
-## Can be configured
+## Configuration
 
-* __ping response__ — Default value is `pong`.
+### `pingResponse`
+
+Default value is `pong`.
+
+## Services
+
+### `pingReply`
+
+Ping reply function.
