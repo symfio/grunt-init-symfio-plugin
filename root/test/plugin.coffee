@@ -1,42 +1,23 @@
-symfio = require "symfio"
-sinon = require "sinon"
-chai = require "chai"
+suite = require "symfio-suite"
 
 
-describe "{%= plugin_name %}()", ->
-  chai.use require "chai-as-promised"
-  chai.use require "sinon-chai"
-  chai.should()
+describe "{%= name %}()", ->
+  it = suite.plugin [
+    require ".."
 
-  container = null
-  sandbox = null
-
-  beforeEach (callback) ->
-    container = symfio "test", __dirname
-    sandbox = sinon.sandbox.create()
-
-    container.set "get", ->
-      sandbox.spy()
-
-    container.injectAll([
-      require ".."
-    ]).should.notify callback
-
-  afterEach ->
-    sandbox.restore()
+    (container) ->
+      container.set "get", (sandbox) ->
+        sandbox.spy()
+  ]
 
   describe "container.unless pingResponse", ->
-    it "should have default value", (callback) ->
-      container.get("pingResponse")
-      .should.eventually.equal("pong").and.notify callback
+    it "should have default value", (pingResponse) ->
+      pingResponse.should.equal "pong"
 
   describe "container.set pingReply", ->
-    it "should wrap respond text", (callback) ->
-      container.get("pingReply").then (pingReply) ->
-        pingReply().should.equal "Response is \"pong\""
-      .should.notify callback
+    it "should wrap respond text", (pingReply) ->
+      pingReply().should.equal "Response is \"pong\""
 
   describe "get /ping", ->
-    it "should define controller", (callback) ->
-      container.get("get")
-      .should.eventually.calledWith("/ping").and.notify callback
+    it "should define controller", (get) ->
+      get.should.calledWith "/ping"
