@@ -15,7 +15,7 @@ container.inject require "symfio-contrib-express"
 container.inject require "symfio-{%= plugin_name %}"
 ```
 
-## Dependensies
+## Dependencies
 
 * [contrib-express](https://github.com/symfio/symfio-contrib-express)
 
